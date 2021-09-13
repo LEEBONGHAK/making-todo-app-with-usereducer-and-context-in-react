@@ -1,25 +1,42 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
+
+const initialState = {
+  toDos: []
+}
+
+const ADD = "add";
 
 // return 하는 object가 state에 들어가게 될 object (replace)
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'increment':
-      return {count: state.count + 1};
-    case 'decrement':
-      return {count: state.count - 1};
+    case ADD:
+      return { toDos: [...state.toDos, { text: action.payload }] };
     default:
       throw new Error();
   }
 };
 
-function App() {
-  const [state, dispatch] = useReducer(reducer, { count: 0 });
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const [newToDo, setNewToDo] = useState("");
+  const onSubmit = event => {
+    event.preventDefault();
+    dispatch({type: ADD, payload: newToDo});
+  };
+  const onChange = event => {
+    const { target : { value }} = event;
+    setNewToDo(value);
+  };
   return (
     <>
-      <h1>To Dos</h1>
-      Count: {state.count}
-      <button onClick={()=>dispatch({type: 'increment'})}>+</button>
-      <button onClick={()=>dispatch({type: 'decrement'})}>-</button>
+      <h1>ADD To Dos</h1>
+      <form onSubmit={onSubmit}>
+        <input value={newToDo} type="text" placeholder="Write to do" onChange={onChange} />
+      </form>
+      <ul>
+        <h2>To Dos</h2>
+        {state.toDos.map((toDo, index) => <li key={index}>{toDo.text}</li>)}
+      </ul>
     </>
   );
 }
