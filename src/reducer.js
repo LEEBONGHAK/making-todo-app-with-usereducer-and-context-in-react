@@ -10,7 +10,6 @@ export const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case ADD:
-      console.log(state);
       return { ...state, toDos: [...state.toDos, { text: action.payload, id: uuidv4() }] };
     case DELETE:
       return { ...state, 
