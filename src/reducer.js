@@ -7,7 +7,8 @@ export const initialState = {
 
 export const ADD = "add";
 export const DELETE = "delete";
-export const COMPLETE = "complete"
+export const COMPLETE = "complete";
+export const UNCOMPLETE = "uncomplete";
 
 // return 하는 object가 state에 들어가게 될 object (replace)
 const reducer = (state, action) => {
@@ -16,12 +17,19 @@ const reducer = (state, action) => {
       console.log(state);
       return { ...state, toDos: [...state.toDos, { text: action.payload, id: uuidv4() }] };
     case DELETE:
-      return { ...state, toDos: state.toDos.filter(toDo => toDo.id !== action.payload) };
+      return { ...state, 
+        toDos: state.toDos.filter(toDo => toDo.id !== action.payload),
+        completed: state.completed.filter(complete => complete.id !== action.payload),
+      };
     case COMPLETE:
-      console.log(state);
       return { ...state, 
         completed: [...state.completed, state.toDos.find(toDo => toDo.id === action.payload)], 
         toDos: state.toDos.filter(toDo => toDo.id !== action.payload)
+      };
+    case UNCOMPLETE:
+      return { ...state, 
+        toDos: [...state.toDos, state.completed.find(complete => complete.id === action.payload)],
+        completed: state.completed.filter(complete => complete.id !== action.payload)
       };
     default:
       throw new Error();
