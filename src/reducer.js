@@ -1,14 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
+import { ADD, DELETE, COMPLETE, UNCOMPLETE } from './actions'
 
 export const initialState = {
   toDos: [],
   completed: [],
 }
-
-export const ADD = "add";
-export const DELETE = "delete";
-export const COMPLETE = "complete";
-export const UNCOMPLETE = "uncomplete";
 
 // return 하는 object가 state에 들어가게 될 object (replace)
 const reducer = (state, action) => {
