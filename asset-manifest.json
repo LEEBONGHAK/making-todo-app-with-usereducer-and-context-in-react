@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/making-todo-app-with-usereducer-and-context-in-react/static/js/main.91a3f077.chunk.js",
+    "main.js.map": "/making-todo-app-with-usereducer-and-context-in-react/static/js/main.91a3f077.chunk.js.map",
+    "runtime-main.js": "/making-todo-app-with-usereducer-and-context-in-react/static/js/runtime-main.4a16b37c.js",
+    "runtime-main.js.map": "/making-todo-app-with-usereducer-and-context-in-react/static/js/runtime-main.4a16b37c.js.map",
+    "static/js/2.d5e6a2b6.chunk.js": "/making-todo-app-with-usereducer-and-context-in-react/static/js/2.d5e6a2b6.chunk.js",
+    "static/js/2.d5e6a2b6.chunk.js.map": "/making-todo-app-with-usereducer-and-context-in-react/static/js/2.d5e6a2b6.chunk.js.map",
+    "index.html": "/making-todo-app-with-usereducer-and-context-in-react/index.html",
+    "static/js/2.d5e6a2b6.chunk.js.LICENSE.txt": "/making-todo-app-with-usereducer-and-context-in-react/static/js/2.d5e6a2b6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4a16b37c.js",
+    "static/js/2.d5e6a2b6.chunk.js",
+    "static/js/main.91a3f077.chunk.js"
+  ]
+}
