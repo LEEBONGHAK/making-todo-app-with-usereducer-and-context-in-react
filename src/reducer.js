@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { ADD, DELETE, COMPLETE, UNCOMPLETE } from './actions'
+import { ADD, DELETE, COMPLETE, UNCOMPLETE, EDIT } from './actions'
 
 export const initialState = {
   toDos: [],
@@ -25,6 +25,13 @@ const reducer = (state, action) => {
       return { ...state, 
         toDos: [...state.toDos, state.completed.find(complete => complete.id === action.payload)],
         completed: state.completed.filter(complete => complete.id !== action.payload)
+      };
+    case EDIT:
+      const target = state.toDos.find((toDo) => toDo.id === action.id);
+      const rest = state.toDos.filter((toDo) => toDo.id !== action.id);
+      return {
+        ...state,
+        toDos: rest.concat({ ...target, text: action.payload })
       };
     default:
       throw new Error();
